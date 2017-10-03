@@ -4,6 +4,7 @@
 #include<netinet/in.h>
 #include<sys/socket.h>
 #include<unistd.h>
+#include<strings.h>
 int main()
 {
 int clntsocket;
@@ -17,7 +18,7 @@ bzero((char *)&serveraddr,sizeof(serveraddr));
 len=sizeof(serveraddr);
 serveraddr.sin_family=AF_INET;
 serveraddr.sin_port=htons(5015);
-server=gethostbyname("192.168.0.2");
+server=gethostbyname("127.0.0.1");
 bcopy((char *)server->h_addr,(char *)&serveraddr.sin_addr.s_addr,sizeof(server->h_addr));
 connect(clntsocket,(struct sockaddr *)&serveraddr,sizeof(serveraddr));
 printf("\nConnection process\n");
