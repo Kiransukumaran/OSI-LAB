@@ -4,6 +4,7 @@
 #include<netinet/in.h>
 #include<sys/socket.h>
 #include<unistd.h>
+#include<strings.h>
 int main()
 {
 int clntsocket,serversocket;
@@ -16,7 +17,7 @@ printf("\n SERVER PROCESS\n");
 bzero((char *)&serveraddr,sizeof(serveraddr));
 serveraddr.sin_family=AF_INET;
 serveraddr.sin_port=htons(5015);
-serveraddr.sin_addr.s_addr=192.168.20.1;
+serveraddr.sin_addr.s_addr=INADDR_ANY;
 bind(serversocket,(struct sockaddr *)&serveraddr,sizeof(serveraddr));
 bzero((char*)&clntaddr,sizeof(clntaddr));
 len=sizeof(clntaddr);
